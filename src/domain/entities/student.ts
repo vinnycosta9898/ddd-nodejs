@@ -1,9 +1,9 @@
-export class Student {
-  public id: string;
-  public name: string;
+import { Entity } from "../../core/entities/entity";
 
-  constructor(name: string, id?: string) {
-    this.name = name;
-    this.id = id ?? randomUUID();
-  }
+interface StudentProps{
+  name: string
+}
+
+export class Student extends Entity<StudentProps> {
+  
 }
