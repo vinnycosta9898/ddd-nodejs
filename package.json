@@ -1,5 +1,5 @@
 {
-	"scripts":{
+	"scripts": {
 		"test": "vitest run",
 		"test:watch": "vitest"
 	},
@@ -7,5 +7,8 @@
 		"@types/node": "^20.11.17",
 		"typescript": "^5.3.3",
 		"vitest": "^1.2.2"
+	},
+	"dependencies": {
+		"dayjs": "^1.11.10"
 	}
 }
