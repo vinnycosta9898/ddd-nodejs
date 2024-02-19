@@ -1,14 +1,19 @@
 {
 	"scripts": {
+		"lint": "eslint src --ext .ts",
+		"lint:fix": "eslint src --ext .ts --fix",
 		"test": "vitest run",
 		"test:watch": "vitest"
 	},
 	"devDependencies": {
 		"@types/node": "^20.11.17",
+		"eslint-plugin-vitest-globals": "^1.4.0",
 		"typescript": "^5.3.3",
+		"vite-tsconfig-paths": "^4.3.1",
 		"vitest": "^1.2.2"
 	},
 	"dependencies": {
-		"dayjs": "^1.11.10"
+		"dayjs": "^1.11.10",
+		"vite": "^5.1.3"
 	}
 }
