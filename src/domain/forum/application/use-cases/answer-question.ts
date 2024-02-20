@@ -8,6 +8,11 @@ interface AnswerQuestionUseCaseRequest {
   content: string
 }
 
+interface AnswerQuestionUseCaseResponse {
+  ianswer: Answer
+}
+
+
 export class AnswerQuestionUseCase {
   constructor(private answersRepository: AnswerRepository) {}
   async execute({
@@ -23,6 +28,8 @@ export class AnswerQuestionUseCase {
 
     await this.answersRepository.create(answer)
 
-    return answer
+    return {
+      answer
+    }
   }
 }
