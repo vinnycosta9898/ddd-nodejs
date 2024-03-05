@@ -6,6 +6,7 @@
 		"test:watch": "vitest"
 	},
 	"devDependencies": {
+		"@faker-js/faker": "^8.4.1",
 		"@types/node": "^20.11.17",
 		"eslint-plugin-vitest-globals": "^1.4.0",
 		"typescript": "^5.3.3",
