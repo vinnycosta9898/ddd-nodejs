@@ -12,7 +12,6 @@ export class InMemoryQuestionsRepository implements QuestionRepository{
     const itemIndex = this.items.findIndex((item) => item.id === question.id)
 
     this.items[itemIndex] = question
-
   }
 
   async delete(question: Question) {
