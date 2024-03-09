@@ -1,5 +1,7 @@
-import { AnswerComment } from '../../enterprise/entities/answer-comment'
+import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment'
 
-export interface AnswerCommentRepository {
-  create(answer: AnswerComment): Promise<void>
+export interface AnswerCommentsRepository {
+  create(answerComment: AnswerComment): Promise<void>
+  delete(answerComment: AnswerComment): Promise<void>
+  findById(id: string): Promise<AnswerComment | null>
 }
