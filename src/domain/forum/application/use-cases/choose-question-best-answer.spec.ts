@@ -4,7 +4,7 @@ import { InMemoryQuestionsRepository } from '../../../../../test/repositories/in
 import { makeQuestion } from '../../../../../test/factories/make-question'
 import { makeAnswer } from '../../../../../test/factories/make-answer'
 
-import { ChooseQuestionBestAnswerUseCase } from './chosse-question-best-answer'
+import { ChooseQuestionBestAnswerUseCase } from './choose-question-best-answer'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
