@@ -3,17 +3,14 @@ import { Optional } from '@/core/types/optional'
 import { Comment, CommentProps } from './comment'
 
 export interface AnswerCommentProps extends CommentProps {
-  authorId: UniqueEntityId
   answerId: UniqueEntityId
-  content: string
-  createdAt: Date
-  updatedAt?: Date
 }
 
 export class AnswerComment extends Comment<AnswerCommentProps> {
-  get answerId(){
-    return this.props.answerid
+  get answerId() {
+    return this.props.answerId
   }
+
   static create(
     props: Optional<AnswerCommentProps, 'createdAt'>,
     id?: UniqueEntityId,
