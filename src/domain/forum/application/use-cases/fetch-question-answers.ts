@@ -1,4 +1,4 @@
-import { Either, rigth } from '@/core/either'
+import { Either, left, rigth } from '@/core/either'
 import { Answer } from '../../enterprise/entities/answer'
 import { AnswerRepository } from '../repositories/answers-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
@@ -8,7 +8,7 @@ interface FetchQuestionAnswerUseCaseRequest {
   page: number
 }
 
-type FetchQuestionAnswerUseCaseResponse = Either<ResourceNotFoundError, {answer: Answer[]}>
+type FetchQuestionAnswerUseCaseResponse = Either<null, {answers: Answer[]}>
 
 export class FetchQuestionAnswerUseCase {
   constructor(private answerRepository: AnswerRepository) {}
@@ -17,17 +17,13 @@ export class FetchQuestionAnswerUseCase {
     questionId,
     page,
   }: FetchQuestionAnswerUseCaseRequest): Promise<FetchQuestionAnswerUseCaseResponse> {
-    const answer = await this.answerRepository.findManyByQuestionId(
+    const answers = await this.answerRepository.findManyByQuestionId(
       questionId,
       { page },
     )
 
-    if (!answer) {
-      throw new Error('Question not found')
-    }
-
     return rigth({
-      answer
+      answers
     })
   }
 }
