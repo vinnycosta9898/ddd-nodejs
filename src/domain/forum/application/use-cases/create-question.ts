@@ -8,7 +8,7 @@ interface CreateQuestionUseCaseRequest {
   content: string
 }
 
-interface CreateQuestionUseCaseResponse{
+interface CreateQuestionUseCaseResponse {
   question: Question
 }
 
@@ -17,18 +17,18 @@ export class CreateQuestionUseCase {
   async execute({
     authorId,
     title,
-    content
-  }: CreateQuestionUseCaseRequest) : Promise<CreateQuestionUseCaseResponse> {
+    content,
+  }: CreateQuestionUseCaseRequest): Promise<CreateQuestionUseCaseResponse> {
     const question = Question.create({
       authorId: new UniqueEntityId(authorId),
       title,
-      content
+      content,
     })
 
     await this.questionsRepository.create(question)
 
-    return{
-      question
+    return {
+      question,
     }
   }
 }

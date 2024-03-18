@@ -26,14 +26,13 @@ describe('Edit Question', () => {
       authorId: 'author-1',
       questionId: newQuestion.id.toString(),
       title: 'Pergunta teste',
-      content: 'Conteudo Teste'
+      content: 'Conteudo Teste',
     })
 
     expect(inMemoryQuestionsRepository.items[0]).toMatchObject({
       title: 'Pergunta teste',
-      content: 'Conteudo Teste'
+      content: 'Conteudo Teste',
     })
-
   })
 
   it('should not be able to Edit a question from another user', async () => {
@@ -51,7 +50,7 @@ describe('Edit Question', () => {
         authorId: 'author-2',
         questionId: newQuestion.id.toString(),
         title: 'Pergunta teste',
-        content: 'Conteudo Teste'
+        content: 'Conteudo Teste',
       })
     }).rejects.toBeInstanceOf(Error)
   })

@@ -1,30 +1,33 @@
-import { Answer } from "../../enterprise/entities/answer"
-import { AnswerRepository } from "../repositories/answers-repository"
+import { Answer } from '../../enterprise/entities/answer'
+import { AnswerRepository } from '../repositories/answers-repository'
 
-interface FetchQuestionAnswerUseCaseRequest{
+interface FetchQuestionAnswerUseCaseRequest {
   questionId: string
   page: number
 }
 
-interface FetchQuestionAnswerUseCaseResponse{
+interface FetchQuestionAnswerUseCaseResponse {
   answer: Answer[]
 }
 
-export class FetchQuestionAnswerUseCase{
-  constructor(private answerRepository: AnswerRepository){}
+export class FetchQuestionAnswerUseCase {
+  constructor(private answerRepository: AnswerRepository) {}
 
   async execute({
     questionId,
-    page
-  }: FetchQuestionAnswerUseCaseRequest) : Promise<FetchQuestionAnswerUseCaseResponse>{
-    const answer = await this.answerRepository.findManyByQuestionId(questionId, { page })
+    page,
+  }: FetchQuestionAnswerUseCaseRequest): Promise<FetchQuestionAnswerUseCaseResponse> {
+    const answer = await this.answerRepository.findManyByQuestionId(
+      questionId,
+      { page },
+    )
 
-    if(!answer){
+    if (!answer) {
       throw new Error('Question not found')
     }
 
     return {
-      answer
+      answer,
     }
-  } 
+  }
 }

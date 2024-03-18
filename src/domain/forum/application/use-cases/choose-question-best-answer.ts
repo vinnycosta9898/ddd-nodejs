@@ -12,26 +12,31 @@ interface ChooseQuestionBestAnswerUseCaseResponse {
   answer: Answer
 }
 
-
 export class ChooseQuestionBestAnswerUseCase {
-  constructor(private questionsRepository: QuestionRepository, private answersRepository: AnswerRepository) {}
+  constructor(
+    private questionsRepository: QuestionRepository,
+    private answersRepository: AnswerRepository,
+  ) {}
+
   async execute({
     authorId,
-    answerId
+    answerId,
   }: ChooseQuestionBestAnswerUseCaseRequest) {
     const answer = await this.answersRepository.findById(answerId)
 
-    if(!answer){
+    if (!answer) {
       throw new Error('Answer not found')
     }
 
-    const question = await this.questionsRepository.findById(answer.questionId.toString())
+    const question = await this.questionsRepository.findById(
+      answer.questionId.toString(),
+    )
 
-    if(!question){
+    if (!question) {
       throw new Error('Question not found')
     }
 
-    if(authorId !== question.authorId.toString()){
+    if (authorId !== question.authorId.toString()) {
       throw new Error('Not allowed')
     }
 
@@ -39,10 +44,8 @@ export class ChooseQuestionBestAnswerUseCase {
 
     await this.questionsRepository.save(question)
 
-    return{
-      question
+    return {
+      question,
     }
-
-
   }
 }

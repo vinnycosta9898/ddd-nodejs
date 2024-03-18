@@ -8,8 +8,7 @@ let sut: FetchQuestionCommentsUseCase
 
 describe('Fetch Question Comments', () => {
   beforeEach(() => {
-    inMemoryQuestionCommentsRepository =
-      new InMemoryQuestionCommentRepository()
+    inMemoryQuestionCommentsRepository = new InMemoryQuestionCommentRepository()
     sut = new FetchQuestionCommentsUseCase(inMemoryQuestionCommentsRepository)
   })
 

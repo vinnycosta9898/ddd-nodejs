@@ -1,7 +1,7 @@
-import { InMemoryAnswersRepository } from "../../../../../test/repositories/in-memory-answers-repository"
-import { AnswerQuestionUseCase } from "./answer-question"
+import { InMemoryAnswersRepository } from '../../../../../test/repositories/in-memory-answers-repository'
+import { AnswerQuestionUseCase } from './answer-question'
 
-let inMemoryAnswerRepository : InMemoryAnswersRepository
+let inMemoryAnswerRepository: InMemoryAnswersRepository
 let sut: AnswerQuestionUseCase
 
 describe('Create Question', () => {
@@ -14,7 +14,7 @@ describe('Create Question', () => {
     const { answer } = await sut.execute({
       questionId: '1',
       instructorId: '1',
-      content: 'Conteúdo da resposta'
+      content: 'Conteúdo da resposta',
     })
 
     expect(answer.id).toBeTruthy()

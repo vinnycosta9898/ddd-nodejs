@@ -9,23 +9,24 @@ interface CommentOnQuestionUseCaseRequest {
   content: string
 }
 
-interface CommentOnQuestionUseCaseResponse{
+interface CommentOnQuestionUseCaseResponse {
   questionComment: QuestionComment
 }
 
 export class CommentOnQuestionUseCase {
   constructor(
-      private questionsRepository: QuestionRepository,
-      private questionCommentsRepository: QuestionCommentsRepository
-    ) {}
+    private questionsRepository: QuestionRepository,
+    private questionCommentsRepository: QuestionCommentsRepository,
+  ) {}
+
   async execute({
     authorId,
     questionId,
-    content
-  }: CommentOnQuestionUseCaseRequest) : Promise<CommentOnQuestionUseCaseResponse> {
+    content,
+  }: CommentOnQuestionUseCaseRequest): Promise<CommentOnQuestionUseCaseResponse> {
     const question = await this.questionsRepository.findById(questionId)
 
-    if(!question){
+    if (!question) {
       throw new Error('Question not found')
     }
 
@@ -34,13 +35,13 @@ export class CommentOnQuestionUseCase {
     const questionComment = QuestionComment.create({
       authorId: new UniqueEntityId(authorId),
       questionId: new UniqueEntityId(questionId),
-      content
+      content,
     })
 
     await this.questionCommentsRepository.create(questionComment)
 
-    return{
-      questionComment
+    return {
+      questionComment,
     }
   }
 }

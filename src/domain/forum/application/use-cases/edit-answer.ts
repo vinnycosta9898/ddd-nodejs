@@ -1,4 +1,4 @@
-import { AnswerRepository } from "../repositories/answers-repository"
+import { AnswerRepository } from '../repositories/answers-repository'
 
 interface EditQAnswerUseCaseRequest {
   authorId: string
@@ -6,32 +6,29 @@ interface EditQAnswerUseCaseRequest {
   content: string
 }
 
-interface EditQAnswerUseCaseResponse{}
+interface EditQAnswerUseCaseResponse {}
 
 export class EditAnswerUseCase {
   constructor(private answersRepository: AnswerRepository) {}
   async execute({
     authorId,
     answerId,
-    content
-  }: EditQAnswerUseCaseRequest) : Promise<EditQAnswerUseCaseResponse> {
-
+    content,
+  }: EditQAnswerUseCaseRequest): Promise<EditQAnswerUseCaseResponse> {
     const answer = await this.answersRepository.findById(answerId)
 
-    if(!answer){
-      throw new Error("QAnswer not found")
+    if (!answer) {
+      throw new Error('QAnswer not found')
     }
 
-    if(authorId !== answer.authorId.toString()){
-      throw new Error("Not allowed")
+    if (authorId !== answer.authorId.toString()) {
+      throw new Error('Not allowed')
     }
 
     answer.content = content
 
     await this.answersRepository.save(answer)
 
-    return{
-      
-    }
+    return {}
   }
 }

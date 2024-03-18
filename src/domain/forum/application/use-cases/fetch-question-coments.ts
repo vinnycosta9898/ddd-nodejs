@@ -1,26 +1,29 @@
-import { QuestionComment } from "../../enterprise/entities/question-coment"
-import { QuestionCommentsRepository } from "../repositories/question-comments-repository"
+import { QuestionComment } from '../../enterprise/entities/question-coment'
+import { QuestionCommentsRepository } from '../repositories/question-comments-repository'
 
-interface FetchQuestionCommentsUseCaseRequest{
+interface FetchQuestionCommentsUseCaseRequest {
   questionId: string
   page: number
 }
 
-interface FetchQuestionCommentsUseCaseResponse{
+interface FetchQuestionCommentsUseCaseResponse {
   questionComments: QuestionComment[]
 }
 
-export class FetchQuestionCommentsUseCase{
-  constructor(private questionCommentsRepository: QuestionCommentsRepository){}
+export class FetchQuestionCommentsUseCase {
+  constructor(private questionCommentsRepository: QuestionCommentsRepository) {}
 
   async execute({
     questionId,
-    page
-  }: FetchQuestionCommentsUseCaseRequest) : Promise<FetchQuestionCommentsUseCaseResponse>{
-    const questionComments = await this.questionCommentsRepository.findManyByQuestionId(questionId, { page })
+    page,
+  }: FetchQuestionCommentsUseCaseRequest): Promise<FetchQuestionCommentsUseCaseResponse> {
+    const questionComments =
+      await this.questionCommentsRepository.findManyByQuestionId(questionId, {
+        page,
+      })
 
     return {
-      questionComments
+      questionComments,
     }
-  } 
+  }
 }

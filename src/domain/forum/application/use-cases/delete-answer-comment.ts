@@ -1,4 +1,4 @@
-import { AnswerCommentsRepository } from "../repositories/answer-comment-reporitory"
+import { AnswerCommentsRepository } from '../repositories/answer-comment-reporitory'
 
 interface DeleteAnswerCommentUseCaseRequest {
   authorId: string
@@ -14,9 +14,8 @@ export class DeleteAnswerCommentUseCase {
     authorId,
     answerCommentId,
   }: DeleteAnswerCommentUseCaseRequest): Promise<DeleteAnswerCommentUseCaseResponse> {
-    const answerComment = await this.answerCommentsRepository.findById(
-      answerCommentId,
-    )
+    const answerComment =
+      await this.answerCommentsRepository.findById(answerCommentId)
 
     if (!answerComment) {
       throw new Error('Answer comment not found.')
