@@ -11,7 +11,10 @@ interface EditQuestionUseCaseRequest {
   content: string
 }
 
-type EditQuestionUseCaseResponse = Either<ResourceNotFoundError | NotAllowedError, {question: Question}>
+type EditQuestionUseCaseResponse = Either<
+  ResourceNotFoundError | NotAllowedError,
+  { question: Question }
+>
 
 export class EditQuestionUseCase {
   constructor(private questionsRepository: QuestionRepository) {}
@@ -37,7 +40,7 @@ export class EditQuestionUseCase {
     await this.questionsRepository.save(question)
 
     return rigth({
-      question
+      question,
     })
   }
 }

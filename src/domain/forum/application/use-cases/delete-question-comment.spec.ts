@@ -8,8 +8,7 @@ let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentRepository
 let sut: DeleteQuestionCommentUseCase
 describe('Delete Question Comment', () => {
   beforeEach(() => {
-    inMemoryQuestionCommentsRepository =
-      new InMemoryQuestionCommentRepository()
+    inMemoryQuestionCommentsRepository = new InMemoryQuestionCommentRepository()
     sut = new DeleteQuestionCommentUseCase(inMemoryQuestionCommentsRepository)
   })
   it('should be able to delete a question comment', async () => {

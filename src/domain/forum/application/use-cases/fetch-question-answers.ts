@@ -8,7 +8,7 @@ interface FetchQuestionAnswerUseCaseRequest {
   page: number
 }
 
-type FetchQuestionAnswerUseCaseResponse = Either<null, {answers: Answer[]}>
+type FetchQuestionAnswerUseCaseResponse = Either<null, { answers: Answer[] }>
 
 export class FetchQuestionAnswerUseCase {
   constructor(private answerRepository: AnswerRepository) {}
@@ -23,7 +23,7 @@ export class FetchQuestionAnswerUseCase {
     )
 
     return rigth({
-      answers
+      answers,
     })
   }
 }

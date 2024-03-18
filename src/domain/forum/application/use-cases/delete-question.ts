@@ -8,7 +8,10 @@ interface DeleteQuestionUseCaseRequest {
   questionId: string
 }
 
-type DeleteQuestionUseCaseResponse = Either<ResourceNotFoundError | NotAllowedError, {}>
+type DeleteQuestionUseCaseResponse = Either<
+  ResourceNotFoundError | NotAllowedError,
+  {}
+>
 
 export class DeleteQuestionUseCase {
   constructor(private questionsRepository: QuestionRepository) {}
@@ -29,7 +32,7 @@ export class DeleteQuestionUseCase {
     await this.questionsRepository.delete(question)
 
     return rigth({
-      question
+      question,
     })
   }
 }

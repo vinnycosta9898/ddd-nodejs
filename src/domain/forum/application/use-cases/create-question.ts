@@ -9,7 +9,7 @@ interface CreateQuestionUseCaseRequest {
   content: string
 }
 
-type CreateQuestionUseCaseResponse = Either<null, {question: Question}>
+type CreateQuestionUseCaseResponse = Either<null, { question: Question }>
 
 export class CreateQuestionUseCase {
   constructor(private questionsRepository: QuestionRepository) {}
@@ -18,7 +18,6 @@ export class CreateQuestionUseCase {
     title,
     content,
   }: CreateQuestionUseCaseRequest): Promise<CreateQuestionUseCaseResponse> {
-    
     const question = Question.create({
       authorId: new UniqueEntityId(authorId),
       title,
@@ -28,7 +27,7 @@ export class CreateQuestionUseCase {
     await this.questionsRepository.create(question)
 
     return rigth({
-      question
+      question,
     })
   }
 }

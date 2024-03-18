@@ -9,7 +9,7 @@ interface AnswerQuestionUseCaseRequest {
   content: string
 }
 
-type AnswerQuestionUseCaseResponse = Either<null, { answer: Answer}>
+type AnswerQuestionUseCaseResponse = Either<null, { answer: Answer }>
 
 export class AnswerQuestionUseCase {
   constructor(private answersRepository: AnswerRepository) {}
@@ -27,7 +27,7 @@ export class AnswerQuestionUseCase {
     await this.answersRepository.create(answer)
 
     return rigth({
-      answer
+      answer,
     })
   }
 }

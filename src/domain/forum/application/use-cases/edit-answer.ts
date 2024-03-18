@@ -9,7 +9,10 @@ interface EditQAnswerUseCaseRequest {
   content: string
 }
 
-type EditQAnswerUseCaseResponse = Either<ResourceNotFoundError | NotAllowedError, {}>
+type EditQAnswerUseCaseResponse = Either<
+  ResourceNotFoundError | NotAllowedError,
+  {}
+>
 
 export class EditAnswerUseCase {
   constructor(private answersRepository: AnswerRepository) {}
