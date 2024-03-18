@@ -1,14 +1,14 @@
+import { Either, rigth } from '@/core/either'
 import { Answer } from '../../enterprise/entities/answer'
 import { AnswerRepository } from '../repositories/answers-repository'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface FetchQuestionAnswerUseCaseRequest {
   questionId: string
   page: number
 }
 
-interface FetchQuestionAnswerUseCaseResponse {
-  answer: Answer[]
-}
+type FetchQuestionAnswerUseCaseResponse = Either<ResourceNotFoundError, {answer: Answer[]}>
 
 export class FetchQuestionAnswerUseCase {
   constructor(private answerRepository: AnswerRepository) {}
@@ -26,8 +26,8 @@ export class FetchQuestionAnswerUseCase {
       throw new Error('Question not found')
     }
 
-    return {
-      answer,
-    }
+    return rigth({
+      answer
+    })
   }
 }
